@@ -1,0 +1,108 @@
+\documentclass{article}
+
+\usepackage[preprint]{neurips_2023}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+\title{Improving MNIST Accuracy through Feature Engineering}
+
+\author{
+  Aina Shafqat \\
+  2021-EE-058 \\
+  Department of Electrical Engineering \\
+  University of Engineering and Technology \\
+  \texttt{2021ee58@student.uet.edu.pk} \\
+  \And
+  Ayesha Ahmad \\
+  2021-EE-052 \\
+  Department of Electrical Engineering \\
+  University of Engineering and Technology \\
+  \texttt{2021ee52@student.uet.edu.pk} \\
+}
+
+
+\begin{document}
+\maketitle
+\section{Background}
+
+% The domain of our project is maximizing the accuracy of Support Vector Machine (SVM) classifier models through feature engineering. 
+The domain of our project is feature engineering of images, with a primary goal of improving the accuracy of the machine learning model, to climb up in the kaggle competition rankings.
+
+
+\subsection{Importance of Research}
+
+The accuracy of the machine learning model is vital in any application. A low accuracy can result in huge losses of money and credibility. 
+An example of this is Zillow's erroneous property valuations, which resulted in losses exceeding \$500 million stemming from their flawed algorithms. This underscores the significance of algorithm accuracy in real-world applications and the machine learning industry. 
+
+\subsection{Aim}
+
+Our project will use feature engineering to improve the accuracy of the Support Vector Machine (SVM) classifier on the MNIST dataset to compete with the Berkley students in the Kaggle competition.
+
+
+\section{Data Source}
+
+The dataset to be used in this paper is MNIST which is provided in the homework 1 (h.w1). It is contained in the file "mnist data.mat" and comprises the following:
+•	Number of samples: The dataset consists of 60,000 labeled digit images specifically curated for training purposes.
+•	Number of features: Each digit image is represented as a grayscale image with dimensions of 28 x 28 pixels. 
+•	Test set: An additional set of 10,000 digit images designated for testing purposes
+All the images are accompanied by one of 10 possible labels, corresponding to the digits 0 through 9.
+
+\section{Relevance to this class}
+\label{headings}
+
+This project will implement concepts taught in class, such as hyper-parameter tuning, Support Vector Machine (SVM) classifiers, and feature engineering. 
+%Our primary emphasis is on feature engineering, aiming to extract valuable characteristics from the dataset to improve the accuracy of SVM classifiers.
+Through careful design and selection of relevant features, our goal is to raise model accuracy.
+
+\subsection{Feature Engineering}
+Feature engineering involves extracting, refining, and selecting features to boost model accuracy.
+
+Initially, diverse datasets and case studies are explored to identify distinctive features tailored to specific problem-solving needs. Through extraction and construction methods, features are shaped to contain essential information.
+
+Subsequently, feature selection techniques aid in identifying the most influential features, facilitating model development. 
+
+Finally, evaluating models using these selected features enables performance assessment and identification of areas for improvement.
+
+Proficiency in these techniques enhances model accuracy and enables efficient resolution of real-world challenges by ensuring that models are trained on the most relevant and informative features, thereby maximizing predictive performance.
+
+\subsection{Hyper-parameters}
+Hyper-parameters play a crucial role in training machine learning models for optimal performance. In our project, we'll explore various hyper-parameter optimization techniques to ensure that our SVM models are well trained. By adjusting hyper-parameters such as the regularization parameter and kernel parameters, we aim to find the optimal settings that maximize model accuracy.
+Additionally, hyper-parameter optimization helps us combat overfitting and underfitting, ensuring that our models generalize well to unseen data. By systematically training hyper-parameters, we can enhance the robustness and effectiveness of our SVM classifiers, ultimately improving our performance in the competition.
+
+\subsection{SVM}
+SVMs encounter challenges with non-linearly separable data and sensitivity to outliers, impacting classification accuracy. Techniques like soft-margin SVMs and outlier detection methods address these issues for strong performance. To optimize SVM models, we'll employ advanced hyperparameter optimization and explore various kernel functions tailored to our feature-engineered dataset.
+% SVMs run into two critical challenges: Firstly, hard-margin SVMs encounter difficulties when data isn't linearly separable, as they strive to find a hyperplane that precisely separates classes. Secondly, these SVMs are highly sensitive to outliers, potentially skewing the hyperplane's positioning and leading to suboptimal classification results. To overcome these issues, various techniques like soft-margin SVMs and outlier detection methods are employed, ensuring robust performance across diverse datasets.
+
+% To achieve this goal, we'll use advanced techniques to optimize hyper parameters, ensuring our SVM models perform their best. We'll also explore different aspects of SVMs, like kernel functions, to adapt them to our feature-engineered dataset and improve performance. By combining these methods, we aim to make the most of SVM strengths while overcoming dataset challenges.
+
+This highlights the importance of feature engineering and how our project applies class concepts to real-world situations. Overall, integrating these techniques is expected to enhance model performance.
+
+
+\subsection{Project work Composition}
+The components of the project and the expected time division is shown in Table~\ref{Work}.
+
+\begin{table}[h]
+  \caption{Work Composition}
+  \label{Work}
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    Divisions    & \% Time \\
+    \midrule
+    Literature survey & 30\% \\
+    Coding & 50\% \\
+    Theory & 20\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\end{document}

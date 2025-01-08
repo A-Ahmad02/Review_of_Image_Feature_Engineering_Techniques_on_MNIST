@@ -1,0 +1,104 @@
+\documentclass{article}
+
+\usepackage[preprint]{neurips_2023}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+\title{Improving MNIST Accuracy through Hyper Parameter Tuning and Feature Engineering \\ Project Update}
+
+\author{
+  Aina Shafqat \\
+  2021-EE-058 \\
+  Department of Electrical Engineering \\
+  University of Engineering and Technology \\
+  \texttt{2021ee58@student.uet.edu.pk} \\
+  \And
+  Ayesha Ahmad \\
+  2021-EE-052 \\
+  Department of Electrical Engineering \\
+  University of Engineering and Technology \\
+  \texttt{2021ee52@student.uet.edu.pk} \\
+}
+
+
+\begin{document}
+\maketitle
+
+This progress update outlines the methodology followed, the results achieved thus far and the future direction of the project. This project is focused on optimizing the performance of a classification model, SVM, using hyper parameter tuning and feature engineering techniques on the MNIST dataset. Experiments were conducted to assess the impact of various hyper parameters on model accuracy and training time, and to identify configurations that notably improved performance metrics. Our exploration included utilizing different featurization techniques to enhance the model's discriminative power with MNIST data. Hyper parameter tuning employed the optuna library's Bayesian optimizer, while featurization involved transforming raw MNIST data into meaningful representations. 
+% In this project, we aimed to enhance the accuracy of a classification model through hyperparameter tuning and feature engineering. The report provides an overview of the methodology, including data preprocessing, model training, hyperparameter optimization, and featurization techniques.
+
+\section{Methodology}
+
+\subsection{Data Preprocessing}
+
+The images in the MNIST dataset were preprocessed through feature engineering. Feature engineering is essential for enhancing the discriminative power of machine learning models. Various featurization techniques were employed to extract meaningful representations from the raw data. 
+\\
+One such technique is the centroid method, which involves identifying the centroid or geometric center of clusters within the data. The number of clusters set were varied from 1 to 20, to generate multiple featurized datasets.
+Additionally, flattening was utilized to convert the multidimensional image into a one-dimensional array, facilitating easier processing by the SVM model. 
+\\
+Eigenvalues and eigenvectors extracted from covariance matrices of the images were also explored as features, providing insights into the variance and orientation of the data. 
+Furthermore, image thresholding alongside flattening were employed to extract relevant features based on intensity levels. The thresholds were varied from 0 to 1, to generate multiple featurized datasets.
+
+\subsection{Model Training}
+The featurized datasets were classified using a Support Vector Machine (SVM) model as per the restrictions on the MNIST competition on Kaggle. SVMs are well-suited for tasks where the number of features exceeds the number of samples, making them suitable for the MNIST dataset, which consists of images represented as a matrix of pixels.
+
+\subsection{Hyperparameter Tuning}
+Hyper parameter tuning is a critical aspect of optimizing machine learning models for better performance. To achieve this, the optuna library's default optimizer was employed. It leverages a Bayesian optimization algorithm called the Tree-structured Parzen Estimator (TPE). This algorithm efficiently explores the hyper parameter space to identify configurations that yield the best objective function value. The validation accuracy was set as the objective function value to be maximized. The maximum number of iterations set for the hyper parameter tuning were 100 trials. This implies that the SVM was trained 100 times with different configurations for one sset of features. 
+\\
+The hyperparameters of the SVM tuned included 'C', 'kernel', 'degree', 'gamma', and 'decision\_function', each of which plays a crucial role in determining the behavior and flexibility of the SVM model.
+
+\section{Results}
+
+The optimized hyper parameters of the featurized datasets are shown in Table~\ref{results}. The results show that the covariance matrix and its eigenvalues and eigenvectors, are not good features for the classification themselves. The centroid method proved effective in transforming raw data into meaningful representations, thereby contributing to improved classification performance for the training set, with a training set accuracy reaching 99.95\%. However, its validation accuracy 78.85\% was not as high, likely due to overfitting. The best test set accuracy till now is 97.871\%. This accuracy ranks 132 on the Public Leaderboard and 284 on the Private Leaderboard.
+
+
+\begin{table}[h]
+  \caption{Best test accuracies of each feature engineering}
+  \label{results}
+  \centering
+  \begin{tabular}{llllll}
+    \toprule
+    &  & \multicolumn{2}{c}{Test Accuracy}  & \\             
+    \cmidrule(r){3-4}
+    Tuning &  & Private &  Public & Validation \\   
+    Time (hrs) & Featurizing & Score (\%) & Score (\%) & Accuracy (\%)\\
+    \midrule
+    89.5315 & Flattened & 97.871 & 97.266 & 97.91\\
+    84.1106  & Thresholded and Flattened & 94.871 & 94.533 & 92.67 \\
+    % 212.8606  & Centroids &  &  & 78.85\\
+    19.2589 & Covariance Matrix & 43.928 & 44.666 & 48.61 \\
+    73.3889  & Eigenvalues and vectors of Cov Matrix & 42.228 & 42.533 & 42.56\\
+
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+% \section{Discussion}
+% The importance of hyper parameter tuning and feature engineering in enhancing model accuracy has already been shown. The centroid method proved effective in transforming raw data into meaningful representations, contributing to improved classification performance. However, limitations such as computational resource requirements for training SVM models were noted, highlighting the need for access to robust infrastructure.
+
+\section{Future Directions}
+Future efforts will focus on exploring additional feature extraction techniques, including edge detection, corner detection, Principal Component Analysis (PCA), scale-invariant feature transform (SIFT), speeded-up robust feature (SURF), and histogram of oriented gradients (HOG). Additionally, training SVM models on different combinations of features will be explored to assess their impact on classification accuracy.
+
+\section{Conclusion}
+In conclusion, this project demonstrates the effectiveness of hyper parameter tuning and feature engineering in enhancing machine learning model performance. Through rigorous experimentation and optimization, significant improvements in accuracy metrics were achieved, paving the way for further exploration and optimization in future research endeavors. It's noteworthy that this progress till now will continue with the exploration of different methods to further increase the test set accuracy. 
+
+\end{document}
+
+
+% 1.	Trial 17: Validation Accuracy - 97.87\%, Top 3 Accuracy - 99.67\%
+% 2.	Trial 16: Validation Accuracy - 95.47\%, Top 3 Accuracy - 99.27\%
+% These accuracies highlight the effectiveness of the optimized hyperparameter configurations in improving model performance, underscoring the significance of hyperparameter tuning in machine learning tasks.
+
+% Our experiments revealed significant improvements in model performance through hyperparameter tuning and feature engineering. Notably, the  achieved the highest validation accuracy of 97.87\%, with a top 3 accuracy of 99.67\%, and required only 17.26 minutes for training. Trial 16 also demonstrated notable performance, achieving a validation accuracy of 95.47\% and a top 3 accuracy of 99.27\% with a training time of 31.47 minutes.
+
+% In our experiments, we tested different configurations for our machine learning model to observe their impact on accuracy and training duration. We discovered that Trial 17 performed the best, achieving a validation accuracy of 97.87\% and a top 3 accuracy of 99.67\%, with a training time of approximately 17.26 minutes. Similarly, Trial 16 showed notable performance, with a validation accuracy of 95.47\% and a top 3 accuracy of 99.27\%, albeit requiring a longer training duration of about 31.47 minutes. These findings underscore the importance of adjusting the model parameters, as they can significantly influence its effectiveness. We will continue to analyze these configurations to refine our model for future applications.
